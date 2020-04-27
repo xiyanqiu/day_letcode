@@ -167,23 +167,65 @@ public class Day04 {
     }
 
 
+    /**
+     * 面试22
+     * @param head
+     * @param k
+     * @return
+     */
+    public ListNode getKthFromEnd(ListNode head, int k) {
+        int len = 0;
+        ListNode ret = head;
+        while (head!=null)
+        {
+            len = len+1;
+            head = head.next;
+        }
+        int count = len-k;
+        if(k>len)
+        {
+            return null;
+        }
+        if (k<=0)
+        {
+            return ret;
+        }
+        while (count>0)
+        {
+            ret = ret.next;
+            count --;
+        }
+        return ret;
+
+    }
+
+
+
+
     public static void main(String[] args) {
         Day04 day04 = new Day04();
 
 //        int[][] points = {{3,2},{-2,2}};
 //        int ret = day04.minTimeToVisitAllPoints(points);
 //        System.out.println(ret);
-//        ListNode l1 = new ListNode(1);
-//        l1.next =new ListNode(0);
-//        l1.next.next = new ListNode(1);
-//        ListNode l2 = new ListNode(6);
-//        l2.next = new ListNode(4);
-//        l2.next.next= new ListNode(3);
-//        ListNode l3 = new ListNode(0);
+        ListNode l1 = new ListNode(1);
+        l1.next =new ListNode(0);
+        l1.next.next = new ListNode(1);
+        l1.next.next.next = new ListNode(2);
+        ListNode l2 = new ListNode(6);
+        l2.next = new ListNode(4);
+        l2.next.next= new ListNode(3);
+        ListNode l3 = new ListNode(0);
 //        int value = day04.getDecimalValue(l3);
 //        System.out.println(value);
-        int ret = day04.waysToChange(10);
-        System.out.println(ret);
+//        int ret = day04.waysToChange(10);
+//        System.out.println(ret);
+        ListNode kthFromEnd = day04.getKthFromEnd(l1, 1);
+        while (kthFromEnd!=null)
+        {
+            System.out.println(kthFromEnd.val);
+            kthFromEnd = kthFromEnd.next;
+        }
 
 
 

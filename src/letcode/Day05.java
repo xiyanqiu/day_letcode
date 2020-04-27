@@ -64,10 +64,47 @@ public class Day05 {
      * 04.02
      * @param nums
      * @return
+    */
+    public TreeNode sortedArrayToBST(int[] nums) {
+        return retree(nums,0,nums.length);
+
+
+
+    }
+
+
+    /**
+     * 面试17
+     * @param n
+     * @return
      */
-//    public TreeNode sortedArrayToBST(int[] nums) {
-//
-//    }
+    public int[] printNumbers(int n) {
+        int[] ret = new int[(int)Math.pow(10,n)-1];
+        for(int i = 0;i<ret.length;i++)
+        {
+            ret[i] = i+1;
+        }
+        return ret;
+
+
+    }
+
+
+
+
+    public TreeNode retree(int[] nums,int start,int end)
+    {
+        if(start==end)
+        {
+            return null;
+        }
+        int mid = start + (end-start)/2;
+        TreeNode node = new TreeNode(nums[mid]);
+        node.left = retree(nums, start, mid);
+        node.right = retree(nums,mid+1,end);
+        return node;
+    }
+
 
     public static void main(String[] args) {
         Day05 day05 = new Day05();
