@@ -23,6 +23,46 @@ public class Day05 {
      }
 
 
+    /**
+     *    LCP 06.拿硬币
+      * @param coins
+     * @return
+     */
+    public int minCount(int[] coins) {
+        int sum = 0;
+        if(coins.length<=0)
+        {
+            return 0;
+        }
+        for(int i =0;i<coins.length;i++)
+        {
+            if(coins[i]/2 >0){
+
+                if(coins[i]%2==0)
+                {
+                    sum = sum + coins[i]/2;
+                }
+                else
+                    {
+                        sum = sum + coins[i]/2 +1;
+                    }
+            }
+            else
+                {
+                    if(coins[i]==0)
+                    {
+                        sum = sum;
+                    }
+                    if(coins[i]==1)
+                    {
+                        sum = sum +1;
+                    }
+                }
+        }
+        return sum;
+
+    }
+
 
     /**
      * 面试02.02
@@ -68,8 +108,6 @@ public class Day05 {
     public TreeNode sortedArrayToBST(int[] nums) {
         return retree(nums,0,nums.length);
 
-
-
     }
 
 
@@ -108,17 +146,20 @@ public class Day05 {
 
     public static void main(String[] args) {
         Day05 day05 = new Day05();
-        ListNode l1 = new ListNode(1);
-        l1.next =new ListNode(2);
-        l1.next.next = new ListNode(4);
-        l1.next.next.next = new ListNode(5);
-        ListNode l2 = new ListNode(6);
-        l2.next = new ListNode(4);
-        l2.next.next= new ListNode(3);
-        int ret = day05.kthToLast(l1, 2);
-        System.out.println(ret);
-        int[] a ={1,2,3,4,5};
-        System.out.println(a.length);
+//        ListNode l1 = new ListNode(1);
+//        l1.next =new ListNode(2);
+//        l1.next.next = new ListNode(4);
+//        l1.next.next.next = new ListNode(5);
+//        ListNode l2 = new ListNode(6);
+//        l2.next = new ListNode(4);
+//        l2.next.next= new ListNode(3);
+//        int ret = day05.kthToLast(l1, 2);
+//        System.out.println(ret);
+//        int[] a ={1,2,3,4,5};
+//        System.out.println(a.length);
+        int[] a ={2,3,10};
+        int minCount = day05.minCount(a);
+        System.out.println(minCount);
 
     }
 

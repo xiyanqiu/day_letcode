@@ -14,6 +14,30 @@ public class Day07 {
 
     }
 
+
+    /**
+     *    面试题27.二叉树的镜像
+     * @param root
+     * @return
+     */
+    public TreeNode mirrorTree(TreeNode root) {
+        TreeNode tmp;
+        if(root==null)
+        {
+            return null;
+
+        }
+        tmp = root.left;
+        root.left = mirrorTree(root.right);
+        root.right = mirrorTree(tmp);
+        return root;
+
+    }
+
+
+
+
+
     /**
      *   letcode 面试55-1.二叉树的深度
       * @param root
@@ -50,8 +74,12 @@ public class Day07 {
 //        treeNode01.left.right = new TreeNode(0);
         treeNode01.right.left = new TreeNode(15);
         treeNode01.right.right = new TreeNode(7);
-        int depth = day07.maxDepth(treeNode01);
-        System.out.println(depth);
+//        int depth = day07.maxDepth(treeNode01);
+//        System.out.println(depth);
+        TreeNode treeNode = day07.mirrorTree(treeNode01);
+
+        System.out.println(treeNode);
+
 
     }
 
