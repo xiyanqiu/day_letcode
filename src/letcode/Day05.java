@@ -2,6 +2,7 @@ package letcode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Stack;
 
 /**
  * @Auther:leeling
@@ -21,6 +22,104 @@ public class Day05 {
         TreeNode right;
         TreeNode(int x) { val = x; }
      }
+
+
+    /**
+     *     1221.分割平衡字符串,解法**重要
+     * @param s
+     * @return
+     */
+    public int balancedStringSplit(String s) {
+        Stack<Character> stack = new Stack<>();
+        int count = 0;
+        for(int i =0;i<s.length();i++)
+        {
+            char c = s.charAt(i);
+            if(stack.isEmpty()||c==stack.peek())
+            {
+                stack.push(c);
+            }
+            else
+                {
+                    stack.pop();
+                }
+            if(stack.isEmpty())
+            {
+                count ++;
+            }
+        }
+        return count;
+
+    }
+
+
+
+    /**
+     *  202,快乐数
+     * @param n
+     * @return
+     */
+    public boolean isHappy(int n) {
+        HashMap<Integer,Integer> hashMap = new HashMap<>();
+
+        while (n!=1)
+        {
+            int sum =0;
+            while (n>0)
+            {
+                int temp = n%10;
+                sum += Math.pow(temp,2);
+                n = n/10;
+            }
+            System.out.println(sum);
+            n = sum;
+            if(hashMap.size()>100)
+            {
+                return false;
+            }
+            if(hashMap.containsKey(sum))
+            {
+                hashMap.put(sum,0);
+                return false;
+            }
+        }
+        hashMap.put(n,1);
+
+      return true;
+
+    }
+
+
+
+    //超出时间
+//    public boolean isHappy(int n) {
+//        ArrayList<Integer> arrayList = new ArrayList<>();
+//        arrayList.add(n);
+//        while (n!=1){
+//
+//
+//        String s = String.valueOf(n);
+//        int sum =0;
+//        for(int i =0;i<s.length();i++)
+//        {
+//             char c = s.charAt(i);
+//             int each = Integer.parseInt(String.valueOf(c));
+//             sum = (int) (sum + Math.pow(each,2));
+//        }
+//         for(int k=0;k<arrayList.size();k++)
+//        {
+//
+//            if(sum==arrayList.get(k))
+//            {
+//                return false;
+//            }
+//        }
+//        n = sum;
+//
+//        }
+//        return true;
+//
+//    }
 
 
     /**
@@ -157,9 +256,17 @@ public class Day05 {
 //        System.out.println(ret);
 //        int[] a ={1,2,3,4,5};
 //        System.out.println(a.length);
-        int[] a ={2,3,10};
-        int minCount = day05.minCount(a);
-        System.out.println(minCount);
+//        int[] a ={2,3,10};
+//        int minCount = day05.minCount(a);
+//        System.out.println(minCount);
+//        int a = 19;
+//        boolean happy = day05.isHappy(a);
+//        System.out.println(happy);
+//        System.out.println(1%10);
+        String s = "RLLLLRRRLR";
+        int stringSplit = day05.balancedStringSplit(s);
+        System.out.println(stringSplit);
+
 
     }
 
