@@ -15,6 +15,53 @@ public class Day08 {
           ListNode(int x) { val = x; }
         }
 
+    /**
+     * 面试题25. 合并两个排序的链表 和LeetCode 21题相同
+     * @param l1
+     * @param l2
+     * @return
+     */
+    public ListNode mergeTwoLists2(ListNode l1, ListNode l2) {
+        ListNode listNode = null;
+        ListNode temp ;
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        while (l1!=null)
+        {
+            int val = l1.val;
+            arrayList.add(val);
+            l1 = l1.next;
+        }
+        while (l2!=null)
+        {
+            int val = l2.val;
+            arrayList.add(val);
+            l2 = l2.next;
+        }
+        //对arraylist进行排序
+        arrayList.sort(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o1.compareTo(o2);
+            }
+        });
+        if(arrayList.size()==0)
+        {
+            return null;
+        }
+        listNode = new ListNode(arrayList.get(0));
+        temp = listNode;
+        for(int i = 1;i<arrayList.size();i++)
+        {
+            temp.next = new ListNode(arrayList.get(i));
+//            System.out.println(curr.val);
+            temp = temp.next;
+
+        }
+
+
+            return listNode;
+    }
+
     public ListNode reverseList(ListNode head) {
         //使用栈来解决问题
 //        if(head == null){
@@ -192,11 +239,29 @@ public class Day08 {
 //            listNode = listNode.next;
 //        }
     
-        int[] printe = day08.reversePrint(l1);
-        for(int i=0;i< printe.length;i++)
-        {
-            System.out.println(printe[i]);
-        }
+//        int[] printe = day08.reversePrint(l1);
+//        for(int i=0;i< printe.length;i++)
+//        {
+//            System.out.println(printe[i]);
+//        }
+//        ListNode l11 = new ListNode(1);
+//        l11.next = new ListNode(2);
+//        l11.next.next = new ListNode(4);
+//        ListNode l12 = new ListNode(1);
+//        l12.next = new ListNode(3);
+//        l12.next.next = new ListNode(4);
+//
+//        ListNode listNode = day08.mergeTwoLists2(l11, l12);
+//        while (listNode!=null)
+//        {
+//            int val = listNode.val;
+//            System.out.println(val);
+//            listNode = listNode.next;
+//        }
+        int a = 9;
+        String s = String.valueOf(a);
+        System.out.println(s);
+
 
     }
 

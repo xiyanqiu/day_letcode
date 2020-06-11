@@ -18,6 +18,58 @@ public class Day07 {
 
 
     /**
+     *   700.二叉搜索树中的搜索
+     * @param root
+     * @param val
+     * @return
+     */
+    public TreeNode searchBST(TreeNode root, int val) {
+        TreeNode tree=null;
+        if(root==null){
+            return root;
+        }
+        if(root.val==val)
+        {
+            return root;
+        }
+        else
+            {
+                if(root.val>val)
+                {
+                    tree = searchBST(root.left, val);
+
+                }
+                if(root.val<val)
+                {
+                    tree = searchBST(root.right,val);
+                }
+            }
+
+
+        return tree;
+
+    }
+
+
+    /**
+     *   226.翻转二叉树
+     * @param root
+     * @return
+     */
+    public TreeNode invertTree(TreeNode root) {
+        TreeNode tree;
+        if(root==null)
+        {
+            return root;
+        }
+        tree = new TreeNode(root!=null?root.val:null);
+        tree.left = invertTree(root.right!=null?root.right:null);
+        tree.right = invertTree(root.left!=null?root.left:null);
+        return  tree;
+    }
+
+
+    /**
      *   617.合并二叉树
      * @param t1
      * @param t2
@@ -135,6 +187,7 @@ public class Day07 {
         TreeNode treeNode01 = new TreeNode(1);
         treeNode01.left = new TreeNode(9);
         treeNode01.right = new TreeNode(20);
+        treeNode01.left.right = new TreeNode(5);
 //        treeNode01.left.left = new TreeNode(0);
 //        treeNode01.left.right = new TreeNode(0);
 //        treeNode01.right.left = new TreeNode(15);
@@ -169,8 +222,13 @@ public class Day07 {
         TreeNode treeNode02 = new TreeNode(3);
         treeNode02.right = new TreeNode(4);
         treeNode02.right.left = new TreeNode(1);
-        TreeNode treeNode = day07.mergeTrees(treeNode01, treeNode02);
+//        TreeNode treeNode = day07.mergeTrees(treeNode01, treeNode02);
 
+        TreeNode treeNode = day07.invertTree(treeNode01);
+        System.out.println(treeNode.val);
+        System.out.println(treeNode.left.val);
+        System.out.println(treeNode.right.val);
+        System.out.println(treeNode.right.left.val);
 
 
 
