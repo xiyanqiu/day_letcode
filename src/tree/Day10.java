@@ -8,7 +8,7 @@ import java.util.*;
  */
 public class Day10 {
 
-class Node {
+static class Node {
     public int val;
     public List<Node> children;
 
@@ -23,6 +23,30 @@ class Node {
         children = _children;
     }
     }
+
+    /**
+     * 589. N叉树的前序遍历
+     * @param root
+     * @return
+     */
+    public List<Integer> preorder(Node root) {
+        List<Integer> res = new ArrayList<Integer>();
+        //递归版
+        if(root == null)
+            return res;
+        res.add(root.val);
+        for(Node child:root.children)
+        {
+            preorder(child);
+        }
+
+        return res;
+
+
+    }
+
+
+
 
     /**
      * 590. N叉树的后序遍历
@@ -53,6 +77,10 @@ class Node {
         return list;
 
 
+
+    }
+
+    public static void main(String[] args) {
 
     }
 
